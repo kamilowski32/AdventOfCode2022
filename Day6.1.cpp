@@ -1,4 +1,5 @@
 ﻿#include <iostream>
+#include <fstream>
 
 using namespace std;
 
@@ -9,8 +10,11 @@ bool anySame(char c1, char c2, char c3, char c4)
 
 int main()
 {
+    fstream file;
+    file.open("Day6.txt");
     string input;
-    cin >> input;
+    file >> input;
+    file.close();
     char c1 = input.at(0), c2 = input.at(1), c3 = input.at(2), c4 = input.at(3);
     int i = 4;
     while (anySame(c1, c2, c3, c4))

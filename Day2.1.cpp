@@ -1,16 +1,17 @@
 ﻿#include <iostream>
 #include <string>
+#include <fstream>
 using namespace std;
 
 int main()
 {
+    fstream file;
+    file.open("Day2.txt");
     int score = 0;
     char player, elf;
     string helper;
-    while (getline(cin, helper))
+    while (getline(file, helper))
     {
-        if (helper == "x")
-            break;
         elf = helper[0];
         player = helper[2];
         switch (player)
@@ -59,5 +60,6 @@ int main()
             break;
         }
     }
+    file.close();
     cout << score;
 }

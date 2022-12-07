@@ -1,14 +1,16 @@
 ﻿#include <iostream>
 #include <string>
+#include <fstream>
 int main()
 {
+    std::fstream file;
+    file.open("Day1.txt");
     long currElf = 0, max = 0;
     std::string currCalories;
-    while (getline(std::cin, currCalories))
+    while (getline(file, currCalories))
     {
-        if (currCalories == "x")
-            break;
         currCalories == "" ? (currElf > max ? max = currElf, currElf = 0 : currElf = 0) : (currElf += std::stol(currCalories));
     }
+    file.close();
     std::cout << max;
 }

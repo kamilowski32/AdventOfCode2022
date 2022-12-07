@@ -1,16 +1,17 @@
 ﻿#include <vector>
 #include <iostream>
 #include <string>
+#include <fstream>
 using namespace std;
 
 int main()
 {
 	string arr[] = { "BVWTQNHD", "BWD", "CJWQST", "PTZNRJF", "TSMJVPG", "NTFWB", "NVHFQDLB", "RFPH", "HPNLBMSZ" };
 	string input;
-	while (getline(cin, input))
+	fstream file;
+	file.open("Day5.txt");
+	while (getline(file, input))
 	{
-		if (input == "x")
-			break;
 		input.erase(0, input.find(' ') + 1);
 		int quantity, stack1, stack2;
 		quantity = stoi(input.substr(0, input.find(' ')));
@@ -26,6 +27,7 @@ int main()
 		arr[stack2] = arr[stack1].substr(0, quantity) + arr[stack2];
 		arr[stack1].erase(0, quantity);
 	}
+	file.close();
 	for (auto i : arr)
 	{
 		cout << i[0];

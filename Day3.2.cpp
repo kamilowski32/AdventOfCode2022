@@ -3,6 +3,7 @@
 #include <vector>
 #include <algorithm>
 #include <iterator>
+#include <fstream>
 
 using namespace std;
 
@@ -23,12 +24,12 @@ int main() {
 	vector<char> commonLetters;
 	string input;
 	int sum = 0;
-	while (getline(cin, input)) //first line
+	fstream file;
+	file.open("Day3.txt");
+	while (getline(file, input)) //first line
 	{
-		if (input == "x")
-			break;
 		string secondInput;
-		getline(cin, secondInput); //secondline
+		getline(file, secondInput); //secondline
 		for (auto i : input)
 		{
 			if (secondInput.find(i) != string::npos)
@@ -36,7 +37,7 @@ int main() {
 				commonLetters.push_back(i);
 			}
 		}
-		getline(cin, secondInput); //thirdLine
+		getline(file, secondInput); //thirdLine
 		for (auto i : input)
 		{
 			if (secondInput.find(i) == string::npos)
@@ -47,5 +48,6 @@ int main() {
 		sum += valueOfChar(commonLetters[0]);
 		commonLetters.clear();
 	}
+	file.close();
 	cout << sum;
 }

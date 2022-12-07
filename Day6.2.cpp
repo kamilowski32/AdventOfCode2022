@@ -1,5 +1,6 @@
 ﻿#include <iostream>
 #include <vector>
+#include <fstream>
 
 using namespace std;
 
@@ -15,8 +16,11 @@ bool anySame(vector<short> vect)
 
 int main()
 {
+    fstream file;
+    file.open("Day6.txt");
     string input;
-    cin >> input;
+    file >> input;
+    file.close();
     vector<short> vect;
     vect.resize(26);
     for (int iter = 0; iter < 14; iter++)

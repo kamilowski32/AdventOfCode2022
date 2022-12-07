@@ -1,6 +1,6 @@
 ﻿#include <iostream>
 #include <string>
-
+#include <fstream>
 using namespace std;
 char sameLetter;
 
@@ -15,10 +15,10 @@ int valueOfChar()
 int main() {
 	string input;
 	int sum = 0;
-	while (getline(cin, input))
+	fstream file;
+	file.open("Day3.txt");
+	while (getline(file, input))
 	{
-		if (input == "x")
-			break;
 		int mid = (input.length() + 1) / 2;
 		string firstPart = input.substr(0, mid);
 		string secondPart = input.substr(mid);
@@ -32,5 +32,6 @@ int main() {
 		}
 		sum += valueOfChar();
 	}
+	file.close();
 	cout << sum;
 }

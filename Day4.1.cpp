@@ -1,17 +1,17 @@
 ﻿#include <iostream>
 #include <string>
 #include <sstream>
+#include <fstream>
 using namespace std;
 
 int main()
 {
 	int howMany = 0;
-	while (true)
+	fstream file;
+	string input;
+	file.open("Day4.txt");
+	while (getline(file,input))
 	{
-		string input;
-		cin >> input;
-		if (input == "x")
-			break;
 		int begin1, begin2, end1, end2;
 		begin1 = stoi(input.substr(0, input.find('-')));
 		input.erase(0, input.find('-') + 1);
@@ -33,5 +33,6 @@ int main()
 			howMany++;
 		}
 	}
+	file.close();
 	cout << howMany;
 }
