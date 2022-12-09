@@ -14,6 +14,6 @@ int main()
         else
             currElf += std::stol(currCalories);
     }
-    file.close()
+    file.close();
     std::cout << top1 + top2 + top3;
 }
